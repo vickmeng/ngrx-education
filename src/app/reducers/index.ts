@@ -8,14 +8,17 @@ import {
 import { environment } from '../../environments/environment';
 import * as player from './player.reducer';
 
+import * as fromRouter from '@ngrx/router-store';
 
 
 export interface AppState {
   player: player.State;
+  router: fromRouter.RouterReducerState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  player: player.reducer
+  router: fromRouter.routerReducer,
+  player: player.reducer,
 };
 
 export function debug(reducer: ActionReducer<any>): ActionReducer<any> {

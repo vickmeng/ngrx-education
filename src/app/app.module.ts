@@ -5,13 +5,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
+import { StoreModule} from '@ngrx/store';
 
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PlayerComponent } from './player/player.component';
 import { reducers, metaReducers } from './reducers';
 import { environment } from '../environments/environment';
+import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
+
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,7 +32,10 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreRouterConnectingModule.forRoot(
+      // {stateKey: 'router'},
+    ),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]
