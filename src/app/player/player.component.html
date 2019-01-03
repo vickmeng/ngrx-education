@@ -1,0 +1,7 @@
+<p>
+  {{isPlaying?'播放中':'暂停中'}}
+</p>
+
+<button (click)="onSwitch(isPlaying)">
+  {{isPlaying?'点击暂停':'点击播放'}}
+</button>
